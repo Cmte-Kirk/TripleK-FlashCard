@@ -1,0 +1,28 @@
+﻿{
+  "manifest_version": 2,
+  "name": "__MSG_extName__",
+  "version": "1.0",
+  "default_locale": "pt_BR",
+  "description": "__MSG_extDescription__",
+  "icons": {
+    "16":  "img/icon16.png",
+    "48":  "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "img/icon16.png",
+      "32": "img/icon32.png"
+    },
+    "default_title": "__MSG_extName__",
+    "default_popup": "background.html"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "bookmarks",
+    "alarms",
+    "unlimitedStorage",
+    "http://responsivevoice.com/"
+  ]
+}

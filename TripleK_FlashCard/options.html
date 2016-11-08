@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html >
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app='app'>
+<head>
+    <meta charset="utf-8" />
+    <link href='styleOption.css' rel='stylesheet' type='text/css' />
+    <script src="libs/angular/angular.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/app.js"></script>
+    <!--
+    <script src="../Scripts/Services/angular-uuid.js"></script>
+    <script src="../Scripts/Services/deckStorage.js"></script>
+    <script src="../Scripts/Controllers/deckCtrl.js"></script>
+    -->
+
+
+    <title></title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header"><h1>TripleK Flash Cards Options</h1></div>
+        <div id="options">
+            {{deckStorage}}
+            <fieldset ng-controller="deckCtrl">
+                <legend>Baralho</legend>
+                <div class="table">
+                    <select class="cell" id="ddlDeck" ng-model="deckList.selected" ng-options="option.content for option in deckList.lista track by option.guid" 
+                    ng-change="toggleSelected(deckList.selected);newDeckContent=deckList.selected.content" >
+                    <option value="">Selecione</option>
+                    </select>
+                    <span class="cellfill">
+                    <input type="text" id="txtDeck" name="txtDeck"  ng-model='newDeckContent' />
+                    </span>
+                </div>
+                <div class="alinhatdir">
+                    <input type="button" id="btnAtualizarDeck" name="btnAtualizarDeck" value="Atualizar " ng-click="edit(deckList.selected)"/>
+                    <input type="button" id="btnSaveDeck" name="btnSaveDeck" value="Adicionar" ng-click="add()"/>
+                    <input type="button" id="btnRemoveDeck" name="btnRemoveDeck" value="Remover" ng-click="remove(deckList.selected)"/>
+                </div>
+            </fieldset>
+            {{deckList.selected}}
+            <fieldset ng-controller="cardCtrl">
+                <legend>Cartões</legend>
+                    <select id="ddlCards" ng-model="cardList.selected" ng-options="option.content.frente for option in cardList.lista track by option.guid"
+                    ng-change="toggleSelected(cardList.selected);newContent=cardList.selected.content" >
+                    <option value="">Selecione</option>
+                    </select>
+
+                    <label for="memFrente">Frente</label>
+                    <textarea id="memFrente" name="memFrente" rows="2" onkeyup="auto_grow(this)"  ng-model='newCardContent.frente'></textarea>
+
+                    <label for="memVerso">Verso</label>
+                    <textarea id="memVerso" name="memVerso" rows="2" onkeyup="auto_grow(this)" ng-model='newCardContent.verso'></textarea>
+
+                    <label for="txtImg">Url da imagem</label>
+                    <input type="text" class="cell" id="txtImg" name="txtImg" ng-model='newCardContent.imagem' />
+                    <label for="txtUrl">Url fonte</label>
+                    <input type="text" class="cell" id="txtUrl" name="txtUrl" ng-model='newCardContent.fonte' />
+
+                    <div class="alinhatdir">
+                        <input type="button" id="btnAtualizarCard" name="btnAtualizarDeck" value="Atualizar " ng-click="edit(cardList.selected)"/>
+                        <input type="button" id="btnSaveCard" name="btnSaveDeck" value="Adicionar" ng-click="add()"/>
+                        <input type="button" id="btnRemoveCard" name="btnRemoveDeck" value="Remover" ng-click="remove(cardList.selected)"/>
+                    </div>
+                    </div>
+            </fieldset>
+        <div id="action_panel">
+            <input type="button" id="backup" value="Copia de Segurança">
+            <input type="button" id="close" value="Fechar">
+        </div>
+        </div>
+    </div>
+</body>
+</html>

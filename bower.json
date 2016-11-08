@@ -1,0 +1,19 @@
+{
+  "name": "TripleK_FlashCard",
+  "description": "",
+  "private": true,  
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angular2#^1.5.8",
+    "angular2-build": "^2.0.0-alpha.34"
+  }
+}
